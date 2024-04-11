@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "flowbite-react": "^0.8.0",
+    "node": "^18.20.2"
+  }
+}
