@@ -4,6 +4,8 @@ import Home from './routes/Home';
 import Page1 from './routes/Page1';
 import Page2 from './routes/Page2';
 import Page3 from './routes/Page3';
+const fs = require('fs');
+
 
 function App() {
   let sub_site
@@ -41,6 +43,13 @@ function navbar(){
               <span className="self-center whitespace-nowrap text-xl font-semibold">Evangelisch Freikirchliche Gemeinde | Baptisten</span>
             </Navbar.Brand>
             <Navbar.Collapse > 
+              {
+                
+                console.log()
+                //const filenames = fs.readdirSync(./routes);
+                //console.log(filenames);
+
+              }
               <Navbar.Link  href="/" active>
                 Home
               </Navbar.Link>
