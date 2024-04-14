@@ -1,9 +1,9 @@
 import './AppOutput.css';
 import { Navbar } from "flowbite-react";
-import Home from './routes/Startseite';
-import Page1 from './routes/Gottesdienst';
-import Page2 from './routes/YOPE';
-import Page3 from './routes/Gemeindebrief';
+import Startseite from './routes/Startseite';
+import Gottesdienst from './routes/Gottesdienst';
+import YOPE from './routes/YOPE';
+import Gemeindebrief from './routes/Gemeindebrief';
 let subsiteArray;
 subsiteArray.append( {
   name: 'Startseite',
@@ -53,15 +53,12 @@ function App() {
 }
 
 
-let navbarArray = {
-  Home,
-  Page1,
-  Page2,
-  Page3
-}
-
-function AddNavbarElements(){
-
+function addNavbarElements(){
+  for (let i = 0; i < subsiteArray.length; i++) {
+    return(
+      <Navbar.Link href={subsiteArray[i].path}className = "text-white"> {subsiteArray[i].name} </Navbar.Link>
+    )
+  }
 };
 
 function navbar(){
@@ -73,14 +70,7 @@ function navbar(){
               <span className="self-center whitespace-nowrap text-xl font-semibold">Evangelisch Freikirchliche Gemeinde | Baptisten</span>
             </Navbar.Brand>
             <Navbar.Collapse > 
-              { AddNavbarElements()}
-              <Navbar.Link  href="/" active>
-                Home
-              </Navbar.Link>
-              <Navbar.Link href="/page1"className = "text-white">YOPE</Navbar.Link>
-              <Navbar.Link href="/page2"className = "text-white">Services</Navbar.Link>
-              <Navbar.Link href="/page3"className = "text-white">Pricing</Navbar.Link>
-              <Navbar.Link href="#"className = "text-white">Contact</Navbar.Link>
+              { addNavbarElements()}
             </Navbar.Collapse>
           </Navbar>
               
