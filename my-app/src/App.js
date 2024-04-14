@@ -1,27 +1,44 @@
 import './AppOutput.css';
 import { Navbar } from "flowbite-react";
-import Home from './routes/Home';
-import Page1 from './routes/Page1';
-import Page2 from './routes/Page2';
-import Page3 from './routes/Page3';
-const fs = require('fs');
+import Home from './routes/Startseite';
+import Page1 from './routes/Gottesdienst';
+import Page2 from './routes/YOPE';
+import Page3 from './routes/Gemeindebrief';
+let subsiteArray;
+subsiteArray.append( {
+  name: 'Startseite',
+  path: '/'
+} );
+subsiteArray.append( {
+  name: 'Gottesdienst',
+  path: '/gottesdienst'
+} );
+subsiteArray.append( {
+  name: 'YOPE',
+  path: '/yope'
+} );
+subsiteArray.append( {
+  name: 'Gemeindebrief',
+  path: '/gemeindebrief'
+} );
+
 
 
 function App() {
   let sub_site
   switch(window.location.pathname){
-    case "/":
-      sub_site = <Home />
-      break
-      case "/page1":
-        sub_site = <Page1 />
-        break
-        case "/page2":
-          sub_site = <Page2 />
-          break  
-          case "/page3":
-            sub_site = <Page3 />
-            break 
+  case subsiteArray[0].path:
+    sub_site = < Startseite />
+    break
+  case subsiteArray[1].path:
+    sub_site = < Gottesdienst />
+    break
+  case subsiteArray[2].path:
+    sub_site = < YOPE />
+    break  
+  case subsiteArray[3].path:
+    sub_site = < Gemeindebrief />
+    break 
   }
   return (
     <div> 
@@ -34,6 +51,19 @@ function App() {
     </div>
   );
 }
+
+
+let navbarArray = {
+  Home,
+  Page1,
+  Page2,
+  Page3
+}
+
+function AddNavbarElements(){
+
+};
+
 function navbar(){
     const path = window.location.pathname;
     return(
@@ -43,13 +73,7 @@ function navbar(){
               <span className="self-center whitespace-nowrap text-xl font-semibold">Evangelisch Freikirchliche Gemeinde | Baptisten</span>
             </Navbar.Brand>
             <Navbar.Collapse > 
-              {
-                
-                console.log()
-                //const filenames = fs.readdirSync(./routes);
-                //console.log(filenames);
-
-              }
+              { AddNavbarElements()}
               <Navbar.Link  href="/" active>
                 Home
               </Navbar.Link>
